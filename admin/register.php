@@ -65,21 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <html>
 
-<head>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/utils.css">
 
-</head>
-<?php
+<?php include '../templates/header.php'; ?>
 
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/templates/header.php";
-?>
 
 <body>
 
     <div class="wrapper mx-auto py-1 md:p-7 bg-slate-900">
 
-        <h1 class="text-3xl font-bold mb-5">Add Students</h1>
+        <h1 class="text-xl md:text-3xl font-bold mb-5 mything">Add Students</h1>
 
         <form action="register.php" method="POST" enctype="multipart/form-data">
             <?php

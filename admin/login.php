@@ -8,17 +8,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $envFilePath = realpath($_SERVER["DOCUMENT_ROOT"]) . '/dairyproject/.env';
 
     // Read the contents of the .env file
-    $envContent = file_get_contents($envFilePath);
+    $envFile = file_get_contents($envFilePath);
+    $lines = explode("\n", $envFile);
 
-    // Parse the .env file contents
-    $envVariables = array_filter(array_map('trim', explode(PHP_EOL, $envContent)));
+    $env = [];
 
-    // Extract the key-value pairs into an associative array
-    $envArray = [];
-    foreach ($envVariables as $envVariable) {
-        list($key, $value) = array_map('trim', explode('=', $envVariable, 2));
-        $envArray[$key] = $value;
+    foreach ($lines as $line) {
+        $parts = explode('=', $line, 2);
+
+        if (count($parts) === 2) {
+            $key = trim($parts[0]);
+            $value = trim($parts[1]);
+
+            $env[$key] = $value;
+        }
     }
+    $envArray = $env;
+    // print_r($envArray);
     $uname = $envArray['DB_USERNAME'];
     $upass = $envArray['DB_PASSWORD'];
 
@@ -28,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($username == $uname && $password == $upass) {
         $_SESSION['username'] = $username;
         $_SESSION['role'] = "admin";
-        header("location: ../admin/dashboard.php");
+        header("location: ../admin/index.php");
         exit;
     } else {
         $message = "Invalid username or password";
@@ -55,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="wrapper mx-auto py-1 md:p-7 bg-slate-900 max-h-screen flex items-center flex-col justify-center gap-4" style="width:100%;height:100%;">
 
-        <h1 class="text-3xl font-bold mb-5" align="center">Admin Login</h1>
+        <h1 class="text-xl md:text-3xl font-bold mb-5" align="center">Admin Login</h1>
 
         <form action="login.php" method="POST" enctype="multipart/form-data" class="flex items-center flex-col justify-center gap-2">
             <?php
