@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
 
-    <div class="wrapper mx-auto  md:p-7 bg-slate-900">
+    <div class="wrapper mx-auto bg-slate-900">
 
         <h1 class="text-xl md:text-3xl font-bold">View and Manage Students</h1>
         <p>
@@ -42,7 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <th>Name</th>
                         <th>Enrollment No</th>
                         <th>Email</th>
-                        <th class="round-top"></th>
+                        <th class="round-top">
+                            <a href="deletestudent.php?id=all" class="btn btn-danger delete-button" disabled='true'>
+                                <i class="fa-solid fa-trash"></i> Delete All
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,8 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                 <?php echo $student['email']; ?>
                             </td>
                             <th>
-                                <a href="editstudent.php?id=<?php echo $student['id']; ?>" class="btn btn-primary edit-button" disabled='true'>Edit</a>
-                                <a href="deletestudent.php?id=<?php echo $student['id']; ?>" class="btn btn-danger delete-button" disabled='true'>Delete</a>
+                                <a href="editstudent.php?id=<?php echo $student['id']; ?>" class="btn btn-primary btn-circle edit-button" disabled='true'>
+                                    <i class="fa-solid fa-user-pen"></i>
+                                </a>
+                                <a href="deletestudent.php?id=<?php echo $student['id']; ?>" class="btn btn-danger btn-circle delete-button" disabled='true'>
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                             </th>
                         </tr>
                     <?php } ?>
