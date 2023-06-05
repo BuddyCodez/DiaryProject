@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <th>Enrollment No</th>
                         <th>Email</th>
                         <th class="round-top">
-                            <a href="deletestudent.php?id=all" class="btn btn-danger delete-button" disabled='true'>
+                            <a href="javascript:confirmDelete('delete.page?id=all')" class="btn btn-danger delete-button" disabled='true'>
                                 <i class="fa-solid fa-trash"></i> Delete All
                             </a>
                         </th>
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                 <a href="editstudent.php?id=<?php echo $student['id']; ?>" class="btn btn-primary btn-circle edit-button" disabled='true'>
                                     <i class="fa-solid fa-user-pen"></i>
                                 </a>
-                                <a href="deletestudent.php?id=<?php echo $student['id']; ?>" class="btn btn-danger btn-circle delete-button" disabled='true'>
+                                <a href="javascript:confirmDelete('delete.page?id=<?php echo $student['id']; ?>')" class="btn btn-danger btn-circle delete-button" disabled='true'>
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </th>
@@ -98,6 +98,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </div>
 
     <script>
+        function confirmDelete(delUrl) {
+            if (confirm("Are you sure you want to delete")) {
+                document.location = delUrl;
+            }
+        }
+
         function checkall() {
             const allcheckBoxes = document.querySelectorAll('input[type="checkbox"]');
             const firstBox = allcheckBoxes[0];

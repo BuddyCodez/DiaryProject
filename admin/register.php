@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $branch_id = $data[3];
                         $email = $data[4];
                         $password = $data[5];
-
+                        echo $password;
                         // Hash the password using password_hash()
-                        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                        $hashedPassword = $password;
 
                         // Execute the statement to insert the data into the database table
                         mysqli_stmt_execute($statement);
@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     mysqli_stmt_close($statement);
                     mysqli_close($conn);
                     $message =  "Added Students successfully!";
+                    exit;
                 } catch (Exception $e) {
                     $message =  "Cannot Add Students Code Stack:\n" . $e->getMessage();
                 }

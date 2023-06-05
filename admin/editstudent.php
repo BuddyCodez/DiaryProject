@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <?php include '../templates/header.php'; ?>
 
-
 <body>
 
     <div class="wrapper mx-auto bg-slate-900">
