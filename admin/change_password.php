@@ -1,12 +1,12 @@
 <?php
 // Check if the form is submitted
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/admincheck.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/admincheck.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the new username from the form
     $newPassword = $_POST['password'];
 
     // Read the contents of the .env file
-    $envFilePath = 'C:\xampp\htdocs\DairyProject\.env';
+    $envFilePath = 'C:\xampp\htdocs\diaryproject\.env';
 
     // Read the contents of the .env file
     $envFile = file_get_contents($envFilePath);

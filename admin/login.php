@@ -1,11 +1,11 @@
 <?php
 session_start();
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/connection.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/connection.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Path to the .env file
-    $envFilePath = realpath($_SERVER["DOCUMENT_ROOT"]) . '/dairyproject/.env';
+    $envFilePath = realpath($_SERVER["DOCUMENT_ROOT"]) . '/diaryproject/.env';
 
     // Read the contents of the .env file
     $envFile = file_get_contents($envFilePath);

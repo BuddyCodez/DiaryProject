@@ -1,11 +1,11 @@
 <?php
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/connection.php";
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/admincheck.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/connection.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/admincheck.php";
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if(isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $query = "DELETE FROM students WHERE id = '$id'";
-        if($id == "all") {
+    if(isset($_GET['enrollment'])) {
+        $enrollment = $_GET['enrollment'];
+        $query = "DELETE FROM students WHERE enrollmentno = '$enrollment'";
+        if($enrollment == "all") {
             $query = "DELETE FROM students";
         }
         $result = mysqli_query($conn, $query);
@@ -14,4 +14,3 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
     }
 }
-?>

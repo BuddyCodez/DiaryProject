@@ -14,7 +14,12 @@ body {
   font-family: "Poppins", sans-serif;
   width: 100vw;
 }
-
+.darkb {
+  background-color: #03045E;
+}
+.lightb {
+  background-color: #0077B6;
+}
 .container {
 padding: 20px;
 width: 100vw;
@@ -32,7 +37,7 @@ width: 100vw;
   justify-content: center;
 }
 .bg-container {
-  background: url("http://localhost/dairyproject/public/bg.webp") no-repeat center center;
+  background: url("http://localhost/diaryproject/public/bg.webp") no-repeat center center;
   background-size: cover;
   position: absolute;
   top: 0;

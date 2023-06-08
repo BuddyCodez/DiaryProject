@@ -1,6 +1,6 @@
 <?php
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/connection.php";
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/admincheck.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/connection.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/admincheck.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $branch_id = $data[3];
                         $email = $data[4];
                         $password = $data[5];
-                        echo $password;
+
                         // Hash the password using password_hash()
                         $hashedPassword = $password;
 
@@ -48,13 +48,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Close the statement and database conn
                     mysqli_stmt_close($statement);
                     mysqli_close($conn);
+                    $type = "success";
                     $message =  "Added Students successfully!";
-                    exit;
                 } catch (Exception $e) {
+                    
+                    $type = "danger";
                     $message =  "Cannot Add Students Code Stack:\n" . $e->getMessage();
+                    if($e->getCode() == 1062){
+                        $message = "Duplicate Entry for Email or Enrollment Number: <br> $email or $enrollmentno";
+                    }
                 }
             } else {
                 $message =  "Failed to connect to the database.";
+                $type = "danger";
             }
 
             // Close the CSV file
@@ -78,10 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <form action="register.php" method="POST" enctype="multipart/form-data">
             <?php
-            if (isset($message)) echo "<div class='alert alert-success shadow-lg'><div><svg xmlns='http://www.w3.org/2000/svg' class='stroke-current flex-shrink-0 h-6 w-6' fill='none' viewBox='0 0 24 24'>
-                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
-                    </svg>
-                    <span>$message</span>
+            if (isset($message)) echo $type == "danger" ? "<div class='alert alert-error shadow-lg'><div>
+           <i class='fa-solid fa-circle-xmark'></i>
+                    $message</span>
+                </div>
+            </div>": "<div class='alert alert-success shadow-lg'><div>
+            <i class='fa-solid fa-circle-check'></i>
+                    $message</span>
                 </div>
             </div>";
             ?>

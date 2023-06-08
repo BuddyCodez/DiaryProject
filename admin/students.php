@@ -1,6 +1,6 @@
 <?php
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/connection.php";
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/admincheck.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/connection.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/admincheck.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -23,40 +23,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
 
-    <div class="wrapper mx-auto bg-slate-900">
+    <div class="wrapper mx-auto bg-slate-900 " style="color: #CAF0F8">
 
         <h1 class="text-xl md:text-3xl font-bold">View and Manage Students</h1>
         <p>
             Total Students: <?php echo $total_students; ?>
         </p>
-        <div class="overflow-x-auto bg-indigo-900" style="width: 90vw;">
+        <div class="m-3">
+
+        </div>
+        <div class="overflow-x-auto text-black transition" style="width: 90vw; background: #CAF0F8">
             <table class="table">
                 <!-- head -->
                 <thead>
                     <tr>
+                        <div class="flex m-2 justify-end">
+                            <input type="text" placeholder="Enter name to search" class="input input-bordered input-info " oninput="search(this.value)" />
+                        </div>
+                    </tr>
+                    <tr class="text-black">
                         <th class="round-top">
                             <label>
-                                <input type="checkbox" class="checkbox" onchange="checkall();" />
+                                <input type="checkbox" class="checkbox checkbox-info" onchange="checkall();" />
                             </label>
                         </th>
                         <th>Name</th>
                         <th>Enrollment No</th>
                         <th>Email</th>
-                        <th class="round-top">
-                            <a href="javascript:confirmDelete('delete.page?id=all')" class="btn btn-danger delete-button" disabled='true'>
+                        <th>
+                            <a href="javascript:confirmDelete('deletestudent.php?enrollment=all')" class="btn btn-danger delete-button" disabled='true'>
                                 <i class="fa-solid fa-trash"></i> Delete All
                             </a>
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-black">
                     <!-- row 1 -->
                     <?php
                     foreach ($students as $student) { ?>
                         <tr>
                             <th>
                                 <label>
-                                    <input type="checkbox" class="checkbox" onchange="toggleButtons(this)" />
+                                    <input type="checkbox" class="checkbox checkbox-info" onchange="toggleButtons(this)" />
                                 </label>
                             </th>
                             <td>
@@ -70,10 +78,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                 <?php echo $student['email']; ?>
                             </td>
                             <th>
-                                <a href="editstudent.php?id=<?php echo $student['id']; ?>" class="btn btn-primary btn-circle edit-button" disabled='true'>
+                                <a href="editstudent.php?enrollment=<?php echo $student['enrollmentno']; ?>" class="btn btn-primary btn-circle edit-button" disabled='true'>
                                     <i class="fa-solid fa-user-pen"></i>
                                 </a>
-                                <a href="javascript:confirmDelete('delete.page?id=<?php echo $student['id']; ?>')" class="btn btn-danger btn-circle delete-button" disabled='true'>
+                                <a href="javascript:confirmDelete('deletestudent.php?enrollment=<?php echo $student['enrollmentno']; ?>')" class="btn btn-danger btn-circle delete-button" disabled='true'>
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </th>
@@ -84,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 </tbody>
                 <!-- foot -->
                 <tfoot>
-                    <tr>
+                    <tr class="text-black">
                         <th></th>
                         <th>Name</th>
                         <th>Enrollment No</th>
@@ -98,6 +106,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </div>
 
     <script>
+        // search function
+        function search(value) {
+            // javascript to search from table of html name
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach((row) => {
+                const name = row.querySelector('td:nth-child(2)').innerText.toLowerCase();
+                if (name.includes(value.toLowerCase())) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+        }
+
         function confirmDelete(delUrl) {
             if (confirm("Are you sure you want to delete")) {
                 document.location = delUrl;

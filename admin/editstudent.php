@@ -1,15 +1,15 @@
 <?php
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/connection.php";
-include realpath($_SERVER["DOCUMENT_ROOT"]) . "/dairyproject/api/admincheck.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/connection.php";
+include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/admincheck.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (!isset($_GET['id'])) {
-        header("Location: /dairyproject/admin/students.php");
+    if (!isset($_GET['enrollment'])) {
+        header("Location: /diaryproject/admin/students.php");
     } else {
 
-        $id = $_GET['id'];
-        $query = "SELECT * FROM students WHERE id = $id";
+        $enrollment = $_GET['enrollment'];
+        $query = "SELECT * FROM students WHERE enrollmentno = $enrollment";
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
         // get all branches
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <div class="wrapper mx-auto bg-slate-900">
         <h1 class="text-xl md:text-3xl font-bold">Edit <?php echo $row['name']; ?></h1>
         <form action="edit_action.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $row['id']; ?>"  required />
+
             <div class="form-control w-full max-w-xs">
                 <label class="label">
                     <span class="label-text">Enter Your Name:</span>
@@ -48,13 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <label class="label">
                     <span class="label-text">Enter Your Enrollment:</span>
                 </label>
-                <input type="number" name="enrollmentno" placeholder="Type here" value="<?php echo $row['enrollmentno']; ?>" class="input input-bordered w-full max-w-xs" required />
+                <input type="number" name="enrollmentno" placeholder="Type here" value="<?php echo $row['enrollmentno']; ?>" class="input input-bordered w-full max-w-xs" required readonly="readonly" />
             </div>
             <div class="form-control w-full max-w-xs">
                 <label class="label">
                     <span class="label-text">Enter Your Password:</span>
                 </label>
-                <input type="password" name="pass" placeholder="Type here" class="input input-bordered w-full max-w-xs" required />
+                <input type="password" name="pass" placeholder="Type here" value="<?php echo $row['password']; ?>" class="input input-bordered w-full max-w-xs" required />
             </div>
             <div class="form-control w-full max-w-xs">
                 <label class="label">

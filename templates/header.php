@@ -7,14 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/79101233a3.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="http://localhost/dairyproject/templates/css/index.css">
-    <link rel='stylesheet' href='http://localhost/dairyproject/templates/css/utils.css'>
+    <link rel="stylesheet" href="http://localhost/diaryproject/templates/css/index.css">
+    <link rel='stylesheet' href='http://localhost/diaryproject/templates/css/utils.css'>
     <header style="  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;">
-        <div class="navbar bg-base-100 pcNavbar">
+        <div class="navbar darkb pcNavbar">
             <div class="flex-1">
                 <a class="btn btn-ghost normal-case text-xl">AdminPanel</a>
             </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="navbar bg-base-100 mobileNavbar">
+        <div class="navbar darkb mobileNavbar">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost btn-circle">
