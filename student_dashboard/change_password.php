@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>";
             }
             ?>
-            <label for="password">New Passowrd:</label>
+            <label for="password">New Password:</label>
             <input type="password" name="password" id="password" class="input"  required>
 
             <button type="submit" class="btn btn-info">Change Password</button>
