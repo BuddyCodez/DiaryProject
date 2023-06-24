@@ -24,3 +24,13 @@
 a {
   text-decoration: none;
 }
+.flex{
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.center-j-i {
+  justify-content: center;
+  align-items: center;
+}

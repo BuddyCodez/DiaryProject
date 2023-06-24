@@ -28,7 +28,7 @@
                             </summary>
                             <ul class="p-2 bg-base-100">
                                 <li><a href="students.php">Students </a></li>
-                                <li><a>Faculties</a></li>
+                                <li><a href="view_faculty.php">Faculties</a></li>
                             </ul>
                     </li>
                     <li>
@@ -38,7 +38,7 @@
                             </summary>
                             <ul class="p-2 bg-base-100">
                                 <li><a href="register.php">Students</a></li>
-                                <li><a>Faculties</a></li>
+                                <li><a href="add_faculty.php">Faculties</a></li>
                             </ul>
                         </details>
                     </li>
@@ -48,8 +48,8 @@
                                 Teams
                             </summary>
                             <ul class="p-2 bg-base-100">
-                                <li><a>View </a></li>
-                                <li><a>Assign</a></li>
+                                <li><a href="view_team.php">View </a></li>
+                                <li><a href="assign_team.php">Assign</a></li>
                             </ul>
                         </details>
                     </li>
@@ -92,7 +92,7 @@
                                 </summary>
                                 <ul class="p-2 bg-base-100">
                                     <li><a href="students.php">Students </a></li>
-                                    <li><a>Faculties</a></li>
+                                    <li><a href="view_faculty.php">Faculties</a></li>
                                 </ul>
                         </li>
                         <li>
@@ -102,7 +102,7 @@
                                 </summary>
                                 <ul class="p-2 bg-base-100">
                                     <li><a href="register.php">Students</a></li>
-                                    <li><a>Faculties</a></li>
+                                    <li><a href="add_faculty.php">Faculties</a></li>
                                 </ul>
                             </details>
                         </li>
@@ -112,8 +112,8 @@
                                     Teams
                                 </summary>
                                 <ul class="p-2 bg-base-100">
-                                    <li><a>View </a></li>
-                                    <li><a>Assign</a></li>
+                                    <li><a href="view_team.php">View </a></li>
+                                    <li><a href="assign_team.php">Assign</a></li>
                                 </ul>
                             </details>
                         </li>

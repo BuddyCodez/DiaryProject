@@ -27,8 +27,8 @@
                                 View
                             </summary>
                             <ul class="p-2 bg-base-100">
-                                <li><a href="students.php">Team </a></li>
-                                <li><a>Project</a></li>
+                                <li><a href="my_team.php">Team </a></li>
+                                <li><a href="my_project.php">Project</a></li>
                             </ul>
                     </li>
                     <li>
@@ -86,8 +86,8 @@
                                     View
                                 </summary>
                                 <ul class="p-2 bg-base-100">
-                                    <li><a href="students.php">Team </a></li>
-                                    <li><a>Project</a></li>
+                                    <li><a href="my_team.php">Team </a></li>
+                                    <li><a href="my_project.php">Project</a></li>
                                 </ul>
                         </li>
                         <li>
