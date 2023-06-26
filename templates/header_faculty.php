@@ -16,54 +16,29 @@
   z-index: 1;">
         <div class="navbar darkb pcNavbar">
             <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-xl">StudentPanel</a>
+                <a class="btn btn-ghost normal-case text-xl">FacultyPanel</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1">
-                    <li><a href="http://localhost/diaryproject/student_dashboard">Home</a></li>
-                    <li>
-                        <details>
-                            <summary>
-                                View
-                            </summary>
-                            <ul class="p-2 bg-base-100">
-                                <li><a href="my_team.php">Team </a></li>
-                                <li><a href="my_project.php">Project</a></li>
-                            </ul>
-                    </li>
-                    <li>
-                        <details>
-                            <summary>
-                                Add New
-                            </summary>
-                            <ul class="p-2 bg-base-100">
-                                <li><a href="daily_task.php">Daily Task</a></li>
 
-                            </ul>
-                        </details>
-                    </li>
+                    <li><a>View Projects</a></li>
+                    <li><a>View Tasks</a></li>
                 </ul>
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
                             <div class="icon">
-
-                                <?php
-                                $username = $_SESSION['username'] ?? "";
-                                //  "<i class='fas fa-user'></i>";
-                                echo  "<img src='http://localhost/DiaryProject/templates/uploads/$username.png' alt='profile_pic' />"  ?>
+                                <i class="fas fa-user"></i>
                             </div>
                         </div>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a class="justify-between" href="upload_pic.php">Upload Picture<i class="fa-solid fa-image"></i></a></li>
                         <li>
                             <a class="justify-between" href="change_username.php">
                                 Change Name<i class="fa-solid fa-signature"></i>
 
                             </a>
                         </li>
-
                         <li><a class="justify-between" href="change_password.php">Change Password<i class="fa-solid fa-lock"></i></a></li>
                         <li><a class="justify-between" href="logout.php">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
                     </ul>
@@ -79,15 +54,14 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href="http://localhost/diaryproject/student_dashboard">Home</a></li>
                         <li>
                             <details>
                                 <summary>
                                     View
                                 </summary>
                                 <ul class="p-2 bg-base-100">
-                                    <li><a href="my_team.php">Team </a></li>
-                                    <li><a href="my_project.php">Project</a></li>
+                                    <li><a href="students.php">Students </a></li>
+                                    <li><a href="view_faculty.php">Faculties</a></li>
                                 </ul>
                         </li>
                         <li>
@@ -96,39 +70,46 @@
                                     Add New
                                 </summary>
                                 <ul class="p-2 bg-base-100">
-                                    <li><a href="daily_task.php">Daily Task</a></li>
-
+                                    <li><a href="register.php">Students</a></li>
+                                    <li><a href="add_faculty.php">Faculties</a></li>
                                 </ul>
                             </details>
                         </li>
+                        <li>
+                            <details>
+                                <summary>
+                                    Teams
+                                </summary>
+                                <ul class="p-2 bg-base-100">
+                                    <li><a href="view_team.php">View </a></li>
+                                    <li><a href="assign_team.php">Assign</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li><a>Projects</a></li>
+
                     </ul>
                 </div>
             </div>
             <div class="navbar-center">
-                <a class="btn btn-ghost normal-case text-xl">StudentPanel</a>
+                <a class="btn btn-ghost normal-case text-xl">FacultyPanel</a>
             </div>
             <div class="navbar-end">
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
                             <div class="icon">
-
-                                <?php
-                                $username = $_SESSION['username'] ?? "";
-                                //  "<i class='fas fa-user'></i>";
-                                echo  "<img src='http://localhost/DiaryProject/templates/uploads/$username.png' alt='profile_pic' />"  ?>
+                                <i class="fas fa-user"></i>
                             </div>
                         </div>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a class="justify-between" href="upload_pic.php">Upload Picture<i class="fa-solid fa-image"></i></a></li>
                         <li>
                             <a class="justify-between" href="change_username.php">
                                 Change Name<i class="fa-solid fa-signature"></i>
 
                             </a>
                         </li>
-
                         <li><a class="justify-between" href="change_password.php">Change Password<i class="fa-solid fa-lock"></i></a></li>
                         <li><a class="justify-between" href="logout.php">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
                     </ul>
