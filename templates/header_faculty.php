@@ -21,7 +21,7 @@
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1">
 
-                    <li><a>View Projects</a></li>
+                    <li><a href="view_project.php">View Projects</a></li>
                     <li><a>View Tasks</a></li>
                 </ul>
                 <div class="dropdown dropdown-end">
@@ -54,40 +54,8 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <details>
-                                <summary>
-                                    View
-                                </summary>
-                                <ul class="p-2 bg-base-100">
-                                    <li><a href="students.php">Students </a></li>
-                                    <li><a href="view_faculty.php">Faculties</a></li>
-                                </ul>
-                        </li>
-                        <li>
-                            <details>
-                                <summary>
-                                    Add New
-                                </summary>
-                                <ul class="p-2 bg-base-100">
-                                    <li><a href="register.php">Students</a></li>
-                                    <li><a href="add_faculty.php">Faculties</a></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary>
-                                    Teams
-                                </summary>
-                                <ul class="p-2 bg-base-100">
-                                    <li><a href="view_team.php">View </a></li>
-                                    <li><a href="assign_team.php">Assign</a></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li><a>Projects</a></li>
-
+                        <li><a href="view_project.php">View Projects</a></li>
+                        <li><a>View Tasks</a></li>
                     </ul>
                 </div>
             </div>

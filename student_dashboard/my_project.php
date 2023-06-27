@@ -17,7 +17,6 @@ $teamId = $row['team_id'];
 
 // Check if the user is a team leader
 $isLeader = isset($_SESSION['leader']) && $_SESSION['leader'] === true;
-
 // Check if the project contains the ID for the user's team
 $query = "SELECT * FROM team_project WHERE team_id = '$teamId'";
 $result = mysqli_query($conn, $query);
@@ -59,8 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="wrapper mx-auto bg-slate-900 text-center">
         <h1>My Project</h1>
+        
+        <br>
+        <?php if (!$projectExists) {
+              
+            
+            ?>
 
-        <?php if (!$projectExists) { ?>
             <!-- Display the form for creating a new project -->
             <?php if ($isLeader) { ?>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="flex flex-col center-j-i gap-4" style="width:50%;">
@@ -91,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <th>Project ID</th>
                                 <th>Project Name</th>
                                 <th>Project Description</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,6 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <td><?php echo $row['id']; ?></td>
                                     <td><?php echo $row['name']; ?></td>
                                     <td><?php echo $row['description']; ?></td>
+                                    <td><?php echo $row['approved'] ?? "Not Reviewed" ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

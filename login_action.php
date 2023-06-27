@@ -18,8 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_SESSION['enrollmentno'] = $enrollment;
         $query = "SELECT * FROM team";
         $result = mysqli_query($conn, $query);
-        $team = mysqli_fetch_assoc($result);
-        $enrollments = explode(',', $team['en_no']);
+        while($team = $result->fetch_array()){
+            $enrollments = explode(',', $team['en_no']);
+            if(in_array($enrollment, $enrollments)) {
+                $_SESSION['team_id'] = $team['team_id'];
+                break;
+            }
+        }
+
         if ($enrollments[0] == $enrollment) {
             $_SESSION['leader'] = true;
         } else {
