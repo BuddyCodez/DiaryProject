@@ -9,4 +9,11 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     mysqli_query($conn, $query);
     header("Location: view_project.php");
 }
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $pid = $_POST['projectid'];
+    $remarks = $_POST['remarks'];
+    $query = "UPDATE project SET remarks = '$remarks' WHERE id = '$pid'";
+    mysqli_query($conn, $query);
+    header("Location: view_project.php");
+}
 ?>

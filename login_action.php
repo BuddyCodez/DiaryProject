@@ -48,5 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         header("location: ./index.php");
     } else {
         echo "<script>alert('Invalid Credentials')</script>";
+        header("location: ./login.php?msg=Invalid Credentials");
     }
 }

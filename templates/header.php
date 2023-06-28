@@ -53,7 +53,8 @@
                             </ul>
                         </details>
                     </li>
-                    <li><a>Projects</a></li>
+                    <li><a href="projects.php">Projects</a></li>
+
                 </ul>
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -117,7 +118,7 @@
                                 </ul>
                             </details>
                         </li>
-                        <li><a>Projects</a></li>
+                        <li><a href="projects.php">Projects</a></li>
 
                     </ul>
                 </div>

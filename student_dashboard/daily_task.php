@@ -54,6 +54,7 @@ if (!$isLeader) {
                                     <th>Task Name</th>
                                     <th>Task Description</th>
                                     <th>Task Status</th>
+                                    <th>Task Remarks</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -101,9 +102,12 @@ if (!$isLeader) {
                                                     <a href="edit_task.php">Edit</a>
                                                 </form>
                                             <?php } else { ?>
-                                                <?php echo $row['task_status']; ?>
+                                                <?php echo $row['task_status'] ?? 'Not Added'; ?>
                                             <?php } ?>
 
+                                        </td>
+                                        <td>
+                                            <?php echo $row['task_remarks'] ?? 'No Remarks'; ?>
                                         </td>
                                     </tr>
                                 <?php } ?>

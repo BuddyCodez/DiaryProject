@@ -20,9 +20,9 @@
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1">
-
+                    <li><a href="index.php">Home </a></li>
                     <li><a href="view_project.php">View Projects</a></li>
-                    <li><a>View Tasks</a></li>
+                    <li><a href="view_tasks.php">View Tasks</a></li>
                 </ul>
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -54,8 +54,9 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a href="index.php">Home </a></li>
                         <li><a href="view_project.php">View Projects</a></li>
-                        <li><a>View Tasks</a></li>
+                        <li><a href="view_tasks.php">View Tasks</a></li>
                     </ul>
                 </div>
             </div>

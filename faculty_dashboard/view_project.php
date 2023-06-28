@@ -3,16 +3,17 @@ include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/connection.php"
 include realpath($_SERVER["DOCUMENT_ROOT"]) . "/diaryproject/api/checkfaculty.php";
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-    // get all data from  students table
-    $query = "SELECT * FROM project";
-    $result = mysqli_query($conn, $query);
-    $project = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $total_project = mysqli_num_rows($result);
-    mysqli_free_result($result);
-    mysqli_close($conn);
-}
+// get all data from  students table
+$faculty_id = $_SESSION['faculty_id'];
+$query = "SELECT * FROM team_project where faculty_id = '$faculty_id'";
+$result = mysqli_query($conn, $query);
+$project_id = $result->fetch_assoc()['project_id'];
+$query = "SELECT * FROM project where id = '$project_id'";
+$result = mysqli_query($conn, $query);
+$project = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$total_project = mysqli_num_rows($result);
+mysqli_free_result($result);
+mysqli_close($conn);
 ?>
 
 <html>
@@ -25,59 +26,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     <div class="wrapper mx-auto bg-slate-900 " style="color: #CAF0F8">
 
-        <h1 class="text-xl md:text-3xl font-bold">View Projects</h1>
-        <p>
-            Total Project: <?php echo $total_project; ?>
-        </p>
-        <div class="m-3">
-
-        </div>
-        <div class="overflow-x-auto text-black transition" style="width: 90vw; background: #CAF0F8">
-            <table class="table">
+        <h1 class="text-xl md:text-3xl font-bold">Assigned Project</h1>
+        <div class="overflow-x-auto text-black transition mt-1 darkb rounded-xl">
+            <div class="table p-4">
                 <!-- head -->
-                <thead>
-                    <tr>
-                        <div class="flex m-2 justify-end">
-                            <input type="text" placeholder="Enter name to search" class="input input-bordered input-info text-white " oninput="search(this.value)" />
-                        </div>
-                    </tr>
-                    <tr class="text-black">
-                        <th>name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody class="text-black">
+                <div class="text-white flex-col gap-4">
                     <!-- row 1 -->
                     <?php
-                    foreach ($project as $projects) { 
+                    foreach ($project as $projects) {
                         $status = $projects['approved'] ?? 2;
-                        ?>
-                        <tr>
-
-                            <td>
+                    ?>
+                        <div class="flex center-j-i text-lg">
+                            <label class="label">
+                                Project Name:
+                            </label>
+                            <p class="font-bold">
                                 <?php echo $projects['name']; ?>
-
-                            </td>
-                            <td>
+                            </p>
+                        </div>
+                        <hr />
+                        <div class="flex flex-col center-j-i text-lg">
+                            <label class="label">
+                                Project Description:
+                            </label>
+                            <p class="font-bold  p-1">
                                 <?php echo $projects['description']; ?>
-                            </td>
-                            <td>
-                                <?php echo $status == 1 ? 'Approved' : ($status == 0 ? 'Rejected' : 'Not Reviewed') ; ?>
-                            </td>
-                            <td>
+                            </p>
+                        </div>
+                        <hr />
+                        <div class="flex center-j-i text-lg">
+                            <label class="label">
+                                Project Status:
+                            </label>
+                            <p class="font-bold">
+                                <?php echo $status == 1 ? '<span class="badge badge-outline badge-success">Approved</span>' : ($status == 0 ? '<span class="badge badge-outline badge-error">Rejected</span>' : '<span class="badge badge-outline badge-warning">Not Reviewed</span>'); ?>
+                            </p>
+                        </div>
+                        <hr />
+
+                        <div class="flex flex-col center-j-i text-lg">
+                            <label class="label">
+                                Project Action:
+                            </label>
+                            <p class="font-bold">
                                 <a href="update_projects.php?projectid=<?php echo $projects['id']; ?>&action=a" class="btn btn-success"><i class="fa-solid fa-check"></i>Approve</a>
                                 <a href="update_projects.php?projectid=<?php echo $projects['id']; ?>&action=r" class="btn btn-error"><i class="fa-solid fa-xmark"></i>Reject</a>
-                            </td>
-
+                            </p>
+                        </div>
+                        <td>
+                            <form action="update_projects.php" method="post" class="flex gap-4 center-j-i mt-3">
+                                <input type="hidden" name="projectid" value="<?php echo $projects['id']; ?>">
+                                <textarea name="remarks" cols="30" rows="10" class="input input-bordered input-info text-white" placeholder="Enter remarks"><?php echo $projects['remarks']; ?></textarea>
+                                <button type="submit" class="btn btn-info"><i class="fa-sharp fa-solid fa-pen-to-square"></i>Update</button>
+                            </form>
+                        </td>
                         </tr>
                     <?php } ?>
                     <!-- row 2 -->
 
-                </tbody>
+                </div>
                 <!-- foot -->
 
-            </table>
+            </div>
         </div>
     </div>
 
